@@ -1,0 +1,4 @@
+module.exports = {
+  title: 'freemarker title',
+  appName: 'fis-parser-freemarker'
+}
