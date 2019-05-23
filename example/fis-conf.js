@@ -44,6 +44,9 @@ fis
     .match('/page/**.mock', {
         release: false
     })
+    .match('/paging.ftl', {
+        release: false
+    })
     // 加添scss编译
     .match('*.scss', {
         rExt: '.css',

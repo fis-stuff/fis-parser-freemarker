@@ -1,3 +1,6 @@
 module.exports = {
-  login: 'true'
+  login: 'true',
+  total: 500,
+  pageSize: 20,
+  currentPage: 1
 }

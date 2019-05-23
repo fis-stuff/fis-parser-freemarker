@@ -9,6 +9,10 @@
 <body>
   <#include '/widget/header/header.ftl'>
 
+  <#import "/paging.ftl" as paging>
+
+  <@paging.paging total=total pageSize=pageSize currentPage=currentPage url='http://test.jd.com/xxx/'/>
+
   <#include '/widget/footer/footer.ftl'>
 
   <script data-loader="requirejs" src="http://www.cdn.com/require.js"></script>
