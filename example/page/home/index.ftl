@@ -9,6 +9,8 @@
 <body>
   <#include '/widget/header/header.ftl'>
 
+  <@spring.message "common.ok" />
+  
   <#import "/paging.ftl" as paging>
 
   <@paging.paging total=total pageSize=pageSize currentPage=currentPage url='http://test.jd.com/xxx/'/>

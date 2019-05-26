@@ -4,7 +4,7 @@
   "description": "",
   "main": "fis-conf.js",
   "scripts": {
-    "deploy": "fis3 release prod && fis3 release tpl"
+    "test": "fis3 release -c -d ./output"
   },
   "keywords": [],
   "author": "",

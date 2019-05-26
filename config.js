@@ -24,5 +24,10 @@ module.exports = {
   // 全局的mock文件，相对于root，默认为null
   commonMock: '/page/commonMock.mock',
   // ejs的root配置，默认为项目根目录
-  root: path.resolve('.')
+  root: path.resolve('.'),
+  // @spring.message 语言内容
+  springMessages: {
+    'common.ok': '确认哟哟哟',
+    'message.test': '测试语言'
+  }
 };

@@ -30,7 +30,12 @@ fis.match('*.ftl', {
     // 全局的mock文件，相对于root，默认为null
     commonMock: null,
     // freemarker的root配置，默认为项目根目录
-    root: [fis.project.getProjectPath()]
+    root: [fis.project.getProjectPath()],
+    // @spring.message 语言内容
+    springMessages: {
+      'common.ok': '确认',
+      'common.cancel': '取消'
+    }
   }),
   // 将扩展名发布为html
   rExt: '.html',
