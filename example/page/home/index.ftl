@@ -10,6 +10,8 @@
   <#include '/widget/header/header.ftl'>
 
   <@spring.message "common.ok" />
+
+  <@spring.message "message.from.config"/>
   
   <#import "/paging.ftl" as paging>
 

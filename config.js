@@ -26,8 +26,5 @@ module.exports = {
   // ejs的root配置，默认为项目根目录
   root: path.resolve('.'),
   // @spring.message 语言内容
-  springMessages: {
-    'common.ok': '确认哟哟哟',
-    'message.test': '测试语言'
-  }
+  springMessages: {}
 };
