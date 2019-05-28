@@ -1,9 +1,11 @@
 'use strict'
 
+const path = require('path');
 const util = fis.util;
 let packed = false;
 let ftlConf = {
   loader: 'requirejs',
+  root: path.resolve('./root'),
   springMessages: {
     'common.ok': '确认哟哟哟',
     'message.test': '测试语言',
@@ -35,6 +37,9 @@ fis.match('*', {
 
 // 使用fis-parser-freemarker直接编译html文件
 fis
+  .match('/root/(**.*)', {
+    release: '$1'
+  })
   .match('*.ftl', {
     parser: (content, file) => {
       return require('../')(content, file, ftlConf);
@@ -43,13 +48,13 @@ fis
     loaderLang: 'html',
     isHtmlLike: true
   })
-  .match('/widget/**.{ftl,mock}', {
+  .match('/root/widget/**.{ftl,mock}', {
     release: false
   })
-  .match('/page/**.mock', {
+  .match('/root/page/**.mock', {
     release: false
   })
-  .match('/paging.ftl', {
+  .match('/root/paging.ftl', {
     release: false
   })
   // 加添scss编译
@@ -61,15 +66,15 @@ fis
 // 合并配置
 if (packed) {
   fis
-    .match('/widget/**.{scss,css}', {
-      packTo: '/widget/widget_pkg.css'
+    .match('/root/widget/**.{scss,css}', {
+      packTo: '/root/widget/widget_pkg.css'
     })
-    .match('/widget/**.js', {
+    .match('/root/widget/**.js', {
       // 只有选择了模块化框架后才执行模块化
       isMod: ftlConf.loader ? true : false,
-      packTo: '/widget/widget_pkg.js'
+      packTo: '/root/widget/widget_pkg.js'
     })
-    .match('/widget/config.js', {
+    .match('/root/widget/config.js', {
       isMod: false
     })
 }
@@ -79,7 +84,12 @@ let tmpConf = util.merge({
   parse: false
 }, ftlConf);
 fis
-  .media('tpl')
+  .media('prod')
+  .match('*', {
+    deploy: fis.plugin('local-deliver', {
+      to: './output/static'
+    })
+  })
   .match('*.ftl', {
     parser: (content, file) => {
       return require('../')(content, file, tmpConf);
@@ -89,9 +99,9 @@ fis
       to: './output/template'
     })
   })
-  .match('/page/(**.ftl)', {
+  .match('/root/page(/**.ftl)', {
     release: '$1'
   })
-  .match('/widget/**.ftl', {
-    release: '$0'
+  .match('/root(/widget/**.ftl)', {
+    release: '$1'
   })

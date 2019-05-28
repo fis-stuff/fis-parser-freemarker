@@ -4,7 +4,9 @@
   "description": "",
   "main": "fis-conf.js",
   "scripts": {
-    "test": "fis3 release -c -d ./output"
+    "delete": "rm -rf ./output",
+    "test": "npm run delete && fis3 release -cw -d ./output",
+    "deploy": "npm run delete && fis3 release prod"
   },
   "keywords": [],
   "author": "",
