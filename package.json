@@ -1,6 +1,6 @@
 {
   "name": "fis-parser-freemarker",
-  "version": "0.0.4-alpha",
+  "version": "0.0.4",
   "description": "freemarker template parser plugin for fis",
   "main": "index.js",
   "scripts": {
